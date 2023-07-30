@@ -1,0 +1,24 @@
+{
+  "name": "mobile-quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomergev/Mobile-Quiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomergev/Mobile-Quiz/issues"
+  },
+  "homepage": "https://github.com/tomergev/Mobile-Quiz#readme",
+  "dependencies": {
+    "create-expo-app": "^2.0.3",
+    "expo": "^49.0.5",
+    "react-native-safe-area-context": "4.6.3"
+  }
+}
