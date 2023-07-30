@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar'
+import { useState } from 'react'
 import { 
   FlatList,
   Image,
-  StyleSheet, 
+  Pressable,
+  StyleSheet,
+  Text, 
   View, 
 } from 'react-native'
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -11,11 +14,6 @@ import countries from './countries'
 import createQuiz from './utils/createQuiz'
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap', 
-  },
   flag: {
     flex: 1,
     height: 200,
@@ -25,22 +23,29 @@ const styles = StyleSheet.create({
 const FlagQuiz = () => {
   const insets = useSafeAreaInsets()
   const countriesAfrica = countries.filter(c => c.continents.includes('Africa'))
-  const data = createQuiz(countriesAfrica)
-  console.log(data[0].choices)
+  const quizAfricanCountries = createQuiz(countriesAfrica)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   return (
-    <View style={{ ...styles.container, paddingTop: insets.top }}>
+    <View style={{ paddingTop: insets.top }}>
+      <Text style={{ textAlign: 'center' }}>{quizAfricanCountries[currentIndex].answer.name}</Text>
+      
       <FlatList
-        data={data[0].choices}
+        data={quizAfricanCountries[currentIndex].choices}
         horizontal={false}  
         keyExtractor={c => c.name}
         numColumns={2}
         renderItem={({ item }) => {
-          return <Image 
-            resizeMode="center"
-            source={{ uri: item.flag }} 
+          return <Pressable
+            onPress={() => setCurrentIndex(current => current + 1)}
             style={styles.flag}
-          />
+          >
+            <Image             
+              resizeMode="center"
+              source={{ uri: item.flag }} 
+              style={styles.flag}
+            />
+          </Pressable>
         }}
       />
     </View>

@@ -14,6 +14,8 @@ const createQuiz = (countries) => {
 
     const indexesUsed = [index]
     while (choices.length < 4) {
+      // There is a bug using index
+      // TODO: Have each element have an ID and use ID's to check instead
       let randomInt = getRandomInt(0, countries.length)
       while (indexesUsed.includes(randomInt)) {
         randomInt = getRandomInt(0, countries.length)
