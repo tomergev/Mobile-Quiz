@@ -17,8 +17,6 @@
   },
   "homepage": "https://github.com/tomergev/Mobile-Quiz#readme",
   "dependencies": {
-    "create-expo-app": "^2.0.3",
-    "expo": "^49.0.5",
-    "react-native-safe-area-context": "4.6.3"
+    "create-expo-app": "^2.0.3"
   }
 }
