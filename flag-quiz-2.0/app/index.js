@@ -3,7 +3,6 @@ import { Link } from 'expo-router'
 import { View } from 'react-native'
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
 
-
 const Dashboard = () => {
   const insets = useSafeAreaInsets()
   return <View style={{ paddingTop: insets.top }}>
