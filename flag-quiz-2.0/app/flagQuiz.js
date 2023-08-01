@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from 'expo-router'
 import { useState } from 'react'
 import { 
   FlatList,
@@ -7,47 +8,58 @@ import {
   Text, 
   View, 
 } from 'react-native'
+import ProgressBar from 'react-native-progress/Bar'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import countries from '../countries'
 import createQuiz from '../utils/createQuiz'
-import shuffleArray from '../utils/shuffleArray'
 
-const countriesAfrica = countries.filter(c => c.continents.includes('Europe'))
-const quizAfricanCountries = createQuiz(shuffleArray(countriesAfrica))
 const styles = StyleSheet.create({
   flag: {
     flex: 1,
     height: 200,
   },
   answer: {
-    flex: 2, 
+    alignSelf: 'center',
     fontSize: 20,
-    textAlign: 'center', 
   }
 })
+
 
 const FlagQuiz = () => {
   const insets = useSafeAreaInsets()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [choiceIdSelected, setChoiceIdSelected] = useState(null)
+  const quiz = []
 
   return (
     <View
       style={{
         flex: 1,
-        flexDirection: 'column',
         padding: 10,
         paddingTop: insets.top,
       }}
     >
-      <View style={{ flex: 1 }} />
-      <Text style={styles.answer}>
-        {quizAfricanCountries[currentIndex]?.answer?.name}
-      </Text>
-      <View style={{ flex: 4 }}>
+      <View 
+        style={{ 
+          flex: 2, 
+          justifyContent: 'center',
+        }}
+      >
+        <ProgressBar 
+          height={10} 
+          progress={(currentIndex / quiz.length)} 
+          width={null} 
+        />
+        <Text style={styles.answer}>
+          {quiz[currentIndex]?.answer?.name}
+        </Text>
+      </View>
+      <View 
+        style={{ flex: 4, backgroundColor: 'grey' }}
+      >
         <FlatList
-          data={quizAfricanCountries[currentIndex].choices}
+          data={quiz[currentIndex]?.choices}
           horizontal={false}  
           keyExtractor={c => c.name}
           numColumns={2}
@@ -55,7 +67,7 @@ const FlagQuiz = () => {
             const choiceStyle = { ...styles.flag }
             const isChoiceSelected = choice.id === choiceIdSelected
             if (isChoiceSelected) {
-              const isChoiceAnswer = choice.id === quizAfricanCountries[currentIndex]?.answer?.id
+              const isChoiceAnswer = choice.id === quiz[currentIndex]?.answer?.id
               choiceStyle.borderColor = isChoiceAnswer ? 'green' : 'red'
               choiceStyle.borderWidth = 5
             }
@@ -63,11 +75,14 @@ const FlagQuiz = () => {
               onPress={() => {
                 setChoiceIdSelected(choice.id)
 
-                if (choice.id === quizAfricanCountries[currentIndex]?.answer?.id) {
+                if (choice.id === quiz[currentIndex]?.answer?.id) {
                   setTimeout(() => {
-                    setCurrentIndex(current => current + 1)
+                    // TODO: Need to figure out what to do when a quiz is finished
+                    if (currentIndex <= quiz.length - 1) {
+                      setCurrentIndex((currentIndex) => currentIndex + 1)
+                    }
                     setChoiceIdSelected(null)
-                  }, 1200)
+                  }, 400)
                 }
               }}
               style={choiceStyle}

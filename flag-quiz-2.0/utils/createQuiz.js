@@ -6,6 +6,8 @@ const getRandomInt = (min, max) => {
 }
 
 const createQuiz = (countries) => {
+  if (countries.length < 4) return [] // Just adding this so there's no infinite loop below
+  
   const quiz = []
   
   countries.forEach((country, index) => {
