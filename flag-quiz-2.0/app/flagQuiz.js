@@ -11,9 +11,6 @@ import {
 import ProgressBar from 'react-native-progress/Bar'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import countries from '../countries'
-import createQuiz from '../utils/createQuiz'
-
 const styles = StyleSheet.create({
   flag: {
     flex: 1,
@@ -25,12 +22,12 @@ const styles = StyleSheet.create({
   }
 })
 
-
 const FlagQuiz = () => {
   const insets = useSafeAreaInsets()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [choiceIdSelected, setChoiceIdSelected] = useState(null)
-  const quiz = []
+  const params = useLocalSearchParams() || {}
+  const quiz = JSON.parse(params.quiz || []) 
 
   return (
     <View
@@ -55,9 +52,7 @@ const FlagQuiz = () => {
           {quiz[currentIndex]?.answer?.name}
         </Text>
       </View>
-      <View 
-        style={{ flex: 4, backgroundColor: 'grey' }}
-      >
+      <View style={{ flex: 4 }}>
         <FlatList
           data={quiz[currentIndex]?.choices}
           horizontal={false}  
