@@ -23,7 +23,7 @@ const DashboardQuizes = () => {
   return (
     <View style={{ paddingTop: insets.top }}>
       <Button
-        onPress={() => navigation.navigate('FlagQuiz', { quiz: JSON.stringify(quiz) })}
+        onPress={() => navigation.navigate('FlagQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
         title={continent}
         color='#841584'
       />
