@@ -14,14 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import ResultQuiz from '../components/ResultQuiz' 
 
-const styles = StyleSheet.create({
-  flag: {
-    flex: 1,
-    height: 200,
-  },
-})
-
-const FlagQuiz = () => {
+const CountryNameQuiz = () => {
   const insets = useSafeAreaInsets()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [choiceIdsSelected, setChoiceIdsSelected] = useState([])
@@ -135,4 +128,4 @@ const FlagQuiz = () => {
   )
 }
 
-export default FlagQuiz
+export default CountryNameQuiz
