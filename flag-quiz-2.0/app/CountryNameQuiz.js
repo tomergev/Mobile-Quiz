@@ -66,14 +66,11 @@ const FlagQuiz = () => {
                 justifyContent: 'center',
               }}
             >
-              <Text 
-                style={{
-                  alignSelf: 'center',
-                  fontSize: 20,
-                }}
-              >
-                {quiz[currentIndex]?.answer?.name}
-              </Text>
+              <Image             
+                resizeMode='center'
+                source={{ uri: quiz[currentIndex]?.answer?.flag }} 
+                style={{ flex: 1 }}
+              />
             </View>
             <ProgressBar 
               height={10} 
@@ -88,35 +85,46 @@ const FlagQuiz = () => {
                 keyExtractor={c => c.name}
                 numColumns={2}
                 renderItem={({ item: choice }) => {
-                  const choiceStyle = { ...styles.flag }
+                  const choiceStyle = {}
                   const isChoiceSelected = choiceIdsSelected.includes(choice.id)
                   if (isChoiceSelected) {
                     const isChoiceAnswer = choice.id === quiz[currentIndex]?.answer?.id
                     choiceStyle.borderColor = isChoiceAnswer ? 'green' : 'red'
                     choiceStyle.borderWidth = 5
                   }
-                  return <Pressable
-                    disabled={choiceIdsSelected.includes(choice.id)}
-                    onPress={() => {
-                      setChoiceIdsSelected([...choiceIdsSelected, choice.id])
 
-                      if (choice.id === quiz[currentIndex]?.answer?.id) {
-                        setTimeout(() => {
-                          setCurrentIndex(currentIndex + 1)
-                          setChoiceIdsSelected([])
-                        }, 400)
-                      } else {
-                        setNumOfIncorrectSelections(numOfIncorrectSelections + 1)
-                      }
-                    }}
-                    style={choiceStyle}
-                  >
-                    <Image             
-                      resizeMode='center'
-                      source={{ uri: choice.flag }} 
-                      style={styles.flag}
-                    />
-                  </Pressable>
+                  return (
+                      <Pressable
+                        disabled={choiceIdsSelected.includes(choice.id)}
+                        onPress={() => {
+                          setChoiceIdsSelected([...choiceIdsSelected, choice.id])
+
+                          if (choice.id === quiz[currentIndex]?.answer?.id) {
+                            setTimeout(() => {
+                              setCurrentIndex(currentIndex + 1)
+                              setChoiceIdsSelected([])
+                            }, 400)
+                          } else {
+                            setNumOfIncorrectSelections(numOfIncorrectSelections + 1)
+                          }
+                        }}
+                        style={{ 
+                          ...choiceStyle,
+                          flex: 1, 
+                          justifyContent: 'center',
+                        }}
+                      >
+                      <Text 
+                        style={{
+                          alignSelf: 'center',
+                          fontSize: 20,
+                          height: 200,
+                        }}
+                      >
+                        {choice.name}
+                      </Text>
+                    </Pressable>
+                  )
                 }}
               />
             </View>

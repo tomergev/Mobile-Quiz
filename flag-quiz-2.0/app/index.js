@@ -28,7 +28,7 @@ const App = () => {
             <Link 
               style={{ fontSize: 30 }}
               href={{
-                pathname: '/DashboardQuiz',
+                pathname: '/DashboardQuizes',
                 params: { continent },
               }}
             >
