@@ -105,13 +105,13 @@ const CountryNameQuiz = () => {
                           ...choiceStyle,
                           flex: 1, 
                           justifyContent: 'center',
+                          height: 200,
                         }}
-                      >
+                        >
                       <Text 
                         style={{
                           alignSelf: 'center',
                           fontSize: 20,
-                          height: 200,
                         }}
                       >
                         {choice.name}
