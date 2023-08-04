@@ -32,49 +32,51 @@ const FlagQuiz = () => {
         paddingTop: insets.top,
       }}
     >
-      <View style={{ flexDirection: 'row-reverse' }}>
-        <AntDesign 
-          color='red' 
-          name={numOfIncorrectSelections <= 0 ? 'heart' : 'hearto'} 
-          size={18} 
-          style={{ marginLeft: 2 }}
-        />
-        <AntDesign 
-          color='red' 
-          name={numOfIncorrectSelections <= 1 ? 'heart' : 'hearto'}  
-          size={18} 
-          style={{ marginLeft: 2 }}
-        />
-        <AntDesign 
-          color='red' 
-          name={numOfIncorrectSelections <= 2 ? 'heart' : 'hearto'}  
-          size={18} 
-        />
-      </View>
       {
         isQuizDone ? <ResultQuiz numCorrectAnswers={currentIndex} /> : (
           <>
-            <View 
-              style={{ 
-                flex: 2, 
-                justifyContent: 'center',
-              }}
-            >
-              <Text 
-                style={{
-                  alignSelf: 'center',
-                  fontSize: 20,
+            <View style={{ flex: 2 }}>
+              <View style={{ flexDirection: 'row-reverse' }}>
+                <AntDesign 
+                  color='red' 
+                  name={numOfIncorrectSelections <= 0 ? 'heart' : 'hearto'} 
+                  size={18} 
+                  style={{ marginLeft: 2 }}
+                />
+                <AntDesign 
+                  color='red' 
+                  name={numOfIncorrectSelections <= 1 ? 'heart' : 'hearto'}  
+                  size={18} 
+                  style={{ marginLeft: 2 }}
+                />
+                <AntDesign 
+                  color='red' 
+                  name={numOfIncorrectSelections <= 2 ? 'heart' : 'hearto'}  
+                  size={18} 
+                />
+              </View>
+              <View 
+                style={{ 
+                  flex: 1, 
+                  justifyContent: 'center',
                 }}
               >
-                {quiz[currentIndex]?.answer?.name}
-              </Text>
+                <Text 
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 20,
+                  }}
+                >
+                  {quiz[currentIndex]?.answer?.name}
+                </Text>
+              </View>
+              <ProgressBar 
+                height={screenHeight / 100} 
+                progress={(currentIndex / quiz.length)} 
+                style={{ marginBottom: 2 }}
+                width={null} 
+              />
             </View>
-            <ProgressBar 
-              height={screenHeight / 100} 
-              progress={(currentIndex / quiz.length)} 
-              style={{ marginBottom: 2 }}
-              width={null} 
-            />
             <View style={{ flex: 4 }}>
               <FlatList
                 data={quiz[currentIndex]?.choices}
@@ -84,7 +86,7 @@ const FlagQuiz = () => {
                 renderItem={({ item: choice }) => {
                   const choiceStyle = { 
                     flex: 1, 
-                    height: screenHeight / 3.35, 
+                    height: screenHeight / 3.25, 
                     margin: screenHeight / 200,
                     // ios Shadow                    
                     shadowColor: '#171717',
