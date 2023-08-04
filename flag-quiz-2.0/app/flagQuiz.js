@@ -84,8 +84,20 @@ const FlagQuiz = () => {
                 renderItem={({ item: choice }) => {
                   const choiceStyle = { 
                     flex: 1, 
-                    height: screenHeight / 3.25, 
-                    margin: screenHeight / 200 
+                    height: screenHeight / 3.35, 
+                    margin: screenHeight / 200,
+                    // ios Shadow                    
+                    shadowColor: '#171717',
+                    shadowOffset: { height: 4, width: -2 },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 3,
+                    // Android Shadow
+                    elevation: 5,
+                    shadowColor: '#171717',
+                    backgroundColor: 'white',
+                    borderRadius: 8,
+                    paddingVertical: 45,
+                    paddingHorizontal: 25,
                   }
                   const isChoiceSelected = choiceIdsSelected.includes(choice.id)
                   if (isChoiceSelected) {
