@@ -5,8 +5,8 @@ import {
   FlatList,
   Image,
   Pressable,
-  StyleSheet,
   Text, 
+  useWindowDimensions,
   View, 
 } from 'react-native'
 import ProgressBar from 'react-native-progress/Bar'
@@ -14,18 +14,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import ResultQuiz from '../components/ResultQuiz' 
 
-const styles = StyleSheet.create({
-  flag: {
-    flex: 1,
-    height: 200,
-  },
-})
-
 const FlagQuiz = () => {
-  const insets = useSafeAreaInsets()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [choiceIdsSelected, setChoiceIdsSelected] = useState([])
   const [numOfIncorrectSelections, setNumOfIncorrectSelections] = useState(0)
+  const insets = useSafeAreaInsets()
+  const { height: screenHeight } = useWindowDimensions()
   const params = useLocalSearchParams() || {}
   const quiz = JSON.parse(params.quiz || []) 
   const isQuizDone = numOfIncorrectSelections >= 3 || quiz[currentIndex] === undefined
@@ -76,7 +70,7 @@ const FlagQuiz = () => {
               </Text>
             </View>
             <ProgressBar 
-              height={10} 
+              height={screenHeight / 100} 
               progress={(currentIndex / quiz.length)} 
               style={{ marginBottom: 2 }}
               width={null} 
@@ -88,7 +82,11 @@ const FlagQuiz = () => {
                 keyExtractor={c => c.name}
                 numColumns={2}
                 renderItem={({ item: choice }) => {
-                  const choiceStyle = { ...styles.flag }
+                  const choiceStyle = { 
+                    flex: 1, 
+                    height: screenHeight / 3.25, 
+                    margin: screenHeight / 200 
+                  }
                   const isChoiceSelected = choiceIdsSelected.includes(choice.id)
                   if (isChoiceSelected) {
                     const isChoiceAnswer = choice.id === quiz[currentIndex]?.answer?.id
@@ -114,7 +112,7 @@ const FlagQuiz = () => {
                     <Image             
                       resizeMode='center'
                       source={{ uri: choice.flag }} 
-                      style={styles.flag}
+                      style={{ flex: 1 }}
                     />
                   </Pressable>
                 }}
