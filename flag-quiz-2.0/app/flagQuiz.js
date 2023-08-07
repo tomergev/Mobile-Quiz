@@ -12,6 +12,7 @@ import {
 import ProgressBar from 'react-native-progress/Bar'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import { styles } from '../styles'
 import ResultQuiz from '../components/ResultQuiz' 
 
 const FlagQuiz = () => {
@@ -88,18 +89,7 @@ const FlagQuiz = () => {
                     flex: 1, 
                     height: screenHeight / 3.25, 
                     margin: screenHeight / 200,
-                    // ios Shadow                    
-                    shadowColor: '#171717',
-                    shadowOffset: { height: 4, width: -2 },
-                    shadowOpacity: 0.2,
-                    shadowRadius: 3,
-                    // Android Shadow
-                    elevation: 5,
-                    shadowColor: '#171717',
-                    backgroundColor: 'white',
-                    borderRadius: 8,
-                    paddingVertical: 45,
-                    paddingHorizontal: 25,
+                    ...styles.shadow
                   }
                   const isChoiceSelected = choiceIdsSelected.includes(choice.id)
                   if (isChoiceSelected) {
