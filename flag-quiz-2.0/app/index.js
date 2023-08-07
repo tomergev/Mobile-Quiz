@@ -6,8 +6,11 @@ import {
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import AsiaSvg from '../assets/asia.svg'
 import AfricaSvg from '../assets/africa.svg'
 import EuropeSvg from '../assets/europe.svg'
+import NorthAmerica from '../assets/northAmerica.svg'
+import SouthAmerica from '../assets/southAmerica.svg'
 
 const CONTINENTS = [
   'Africa', 
@@ -20,7 +23,6 @@ const CONTINENTS = [
 
 const App = () => {
   const insets = useSafeAreaInsets()
-  const { height: screenHeight } = useWindowDimensions()  
 
   return <View style={{ flex: 1, paddingTop: insets.top }}>
     <FlatList 
@@ -43,6 +45,18 @@ const App = () => {
       }}
     />
 
+    <AsiaSvg
+      width="100%"
+      height="200"
+    />  
+    <NorthAmerica
+      width="100%"
+      height="200"
+    />  
+    <SouthAmerica 
+      width="100%"
+      height="200"
+    />  
     <EuropeSvg 
       width="100%"
       height="200"
