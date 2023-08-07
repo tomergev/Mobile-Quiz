@@ -1,10 +1,13 @@
 import { Link } from 'expo-router'
 import { 
   FlatList, 
+  useWindowDimensions,
   View, 
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import AfricaSvg from '../assets/africa.svg'
+import EuropeSvg from '../assets/europe.svg'
 
 const CONTINENTS = [
   'Africa', 
@@ -17,7 +20,8 @@ const CONTINENTS = [
 
 const App = () => {
   const insets = useSafeAreaInsets()
-  
+  const { height: screenHeight } = useWindowDimensions()  
+
   return <View style={{ flex: 1, paddingTop: insets.top }}>
     <FlatList 
       data={CONTINENTS}
@@ -38,6 +42,43 @@ const App = () => {
         )
       }}
     />
+
+    <EuropeSvg 
+      width="100%"
+      height="200"
+    />  
+    <AfricaSvg 
+      width="100%"
+      height="200"
+    />  
+
+    {/* <SvgUri
+      width="100%"
+      height="200"
+      uri="https://upload.wikimedia.org/wikipedia/commons/3/3d/Asian_states_map_1.svg"
+    />
+    <SvgUri
+      width="100%"
+      height="200"
+      uri="https://svgsilh.com/svg/151588.svg"
+    />
+    <SvgUri
+      width="100%"
+      height="200"
+      uri="https://svgsilh.com/svg_v2/23571.svg"
+    />
+    <SvgUri
+      width="100%"
+      height="200"
+      uri="https://upload.wikimedia.org/wikipedia/commons/6/66/Blank_Map-Africa.svg"
+    /> */}
+    
+    
+    {/* <Image
+      width="100%"
+      height="200"
+      source='https://freesvg.org/img/azie.png'
+    /> */}
   </View>
 }
 
