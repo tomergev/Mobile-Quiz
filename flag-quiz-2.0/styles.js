@@ -8,11 +8,8 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     // Android Shadow
-    elevation: 5,
+    elevation: 2,
     shadowColor: '#171717',
-    backgroundColor: 'white',
-    borderRadius: 8,
-    paddingVertical: 45,
-    paddingHorizontal: 25, 
+    borderRadius: 3,
   }
 })

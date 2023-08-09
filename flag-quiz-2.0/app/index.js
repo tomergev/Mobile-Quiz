@@ -1,12 +1,11 @@
 import { useNavigation } from 'expo-router'
 import { 
-  Button,
   Pressable,
+  Text,
   useWindowDimensions,
   View, 
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { styles } from '../styles'
 
 import AfricaSvg from '../assets/africa.svg'
 import AsiaSvg from '../assets/asia.svg'
@@ -20,15 +19,18 @@ const App = () => {
   const insets = useSafeAreaInsets()
   const { height: screenHeight } = useWindowDimensions()
 
-  return <View style={{ flex: 1, paddingTop: insets.top }}>
+  return <View style={{ backgroundColor: '#343A40', flex: 1, paddingTop: insets.top }}>
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Pressable
         android_ripple={{ borderless: false }}
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Oceania' })}
         style={({ pressed }) => { 
           const style = {
+            alignItems: 'center',
+            backgroundColor: '#495057',
             flex: 1,
-            ...styles.shadow,
+            justifyContent: 'center',
+            margin: screenHeight / 200,
           }
           if (pressed) style.opacity = 0.5
           return style
@@ -36,7 +38,6 @@ const App = () => {
       >
         <AustraliaSvg
           height={screenHeight / 5}
-          style={{ alignSelf: 'center' }}
           width='100%'
         />
       </Pressable>
@@ -45,8 +46,11 @@ const App = () => {
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'North America' })}
         style={({ pressed }) => { 
           const style = {
+            alignItems: 'center',
+            backgroundColor: '#495057',
             flex: 1,
-            ...styles.shadow,
+            justifyContent: 'center',
+            margin: screenHeight / 200,
           }
           if (pressed) style.opacity = 0.5
           return style
@@ -54,10 +58,8 @@ const App = () => {
       >
         <NorthAmerica 
           height={screenHeight / 5}
-          style={{ alignSelf: 'center' }}
           width='100%'
         />
-
       </Pressable>
     </View>
 
@@ -67,8 +69,11 @@ const App = () => {
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Africa' })}
         style={({ pressed }) => { 
           const style = {
+            alignItems: 'center',
+            backgroundColor: '#495057',
             flex: 1,
-            ...styles.shadow,
+            justifyContent: 'center',
+            margin: screenHeight / 200,
           }
           if (pressed) style.opacity = 0.5
           return style
@@ -76,7 +81,6 @@ const App = () => {
       >
         <AfricaSvg
           height={screenHeight / 5}
-          style={{ alignSelf: 'center' }}
           width='150%'
         />
       </Pressable>
@@ -85,8 +89,11 @@ const App = () => {
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'South America' })}
         style={({ pressed }) => { 
           const style = {
+            alignItems: 'center',
+            backgroundColor: '#495057',
             flex: 1,
-            ...styles.shadow,
+            justifyContent: 'center',
+            margin: screenHeight / 200,
           }
           if (pressed) style.opacity = 0.5
           return style
@@ -94,7 +101,6 @@ const App = () => {
       >
         <SouthAmerica 
           height={screenHeight / 5}
-          style={{ alignSelf: 'center' }}
           width='180%'
         />
       </Pressable>
@@ -106,8 +112,11 @@ const App = () => {
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Asia' })}
         style={({ pressed }) => { 
           const style = {
+            alignItems: 'center',
+            backgroundColor: '#495057',
             flex: 1,
-            ...styles.shadow,
+            justifyContent: 'center',
+            margin: screenHeight / 200,
           }
           if (pressed) style.opacity = 0.5
           return style
@@ -115,8 +124,7 @@ const App = () => {
       >
         <AsiaSvg
           height={screenHeight / 5}
-          style={{ alignSelf: 'center' }}
-          width='150%'
+          width='190%'
         />
       </Pressable>
       <Pressable 
@@ -124,8 +132,11 @@ const App = () => {
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Europe' })}
         style={({ pressed }) => { 
           const style = {
+            alignItems: 'center',
+            backgroundColor: '#495057',
             flex: 1,
-            ...styles.shadow,
+            justifyContent: 'center',
+            margin: screenHeight / 200,
           }
           if (pressed) style.opacity = 0.5
           return style
@@ -133,7 +144,6 @@ const App = () => {
       >
         <EuropeSvg 
           height={screenHeight / 5}
-          style={{ alignSelf: 'center' }}
           width='130%'
         />
       </Pressable>
