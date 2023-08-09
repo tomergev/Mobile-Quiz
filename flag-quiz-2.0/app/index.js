@@ -1,5 +1,7 @@
 import { useNavigation } from 'expo-router'
 import { 
+  Button,
+  Pressable,
   useWindowDimensions,
   View, 
 } from 'react-native'
@@ -20,64 +22,121 @@ const App = () => {
 
   return <View style={{ flex: 1, paddingTop: insets.top }}>
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <View 
-        style={{ 
-          flex: 1,
-          ...styles.shadow
+      <Pressable
+        android_ripple={{ borderless: false }}
+        onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Oceania' })}
+        style={({ pressed }) => { 
+          const style = {
+            flex: 1,
+            ...styles.shadow,
+          }
+          if (pressed) style.opacity = 0.5
+          return style
         }}
-        >
+      >
         <AustraliaSvg
           height={screenHeight / 5}
-          onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Oceania' })}
           style={{ alignSelf: 'center' }}
           width='100%'
         />
-
-      </View>
-      <View 
-        style={{ 
-          flex: 1,
-          ...styles.shadow,
+      </Pressable>
+      <Pressable 
+        android_ripple={{ borderless: false }}
+        onPress={() => navigation.navigate('DashboardQuizes', { continent: 'North America' })}
+        style={({ pressed }) => { 
+          const style = {
+            flex: 1,
+            ...styles.shadow,
+          }
+          if (pressed) style.opacity = 0.5
+          return style
         }}
       >
         <NorthAmerica 
           height={screenHeight / 5}
-          onPress={() => navigation.navigate('DashboardQuizes', { continent: 'North America' })}
           style={{ alignSelf: 'center' }}
           width='100%'
         />
 
-      </View>
+      </Pressable>
     </View>
 
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <AfricaSvg 
-        height={screenHeight / 5}
+      <Pressable
+        android_ripple={{ borderless: false }}
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Africa' })}
-        style={{ alignSelf: 'center' }}
-        width='50%'
-      />
-      <SouthAmerica
-        height={screenHeight / 5}
+        style={({ pressed }) => { 
+          const style = {
+            flex: 1,
+            ...styles.shadow,
+          }
+          if (pressed) style.opacity = 0.5
+          return style
+        }}
+      >
+        <AfricaSvg
+          height={screenHeight / 5}
+          style={{ alignSelf: 'center' }}
+          width='150%'
+        />
+      </Pressable>
+      <Pressable 
+        android_ripple={{ borderless: false }}
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'South America' })}
-        style={{ alignSelf: 'center' }}
-        width='50%'
-      />
+        style={({ pressed }) => { 
+          const style = {
+            flex: 1,
+            ...styles.shadow,
+          }
+          if (pressed) style.opacity = 0.5
+          return style
+        }}
+      >
+        <SouthAmerica 
+          height={screenHeight / 5}
+          style={{ alignSelf: 'center' }}
+          width='180%'
+        />
+      </Pressable>
     </View>
 
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <AsiaSvg 
-        height={screenHeight / 5}
+      <Pressable
+        android_ripple={{ borderless: false }}
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Asia' })}
-        style={{ alignSelf: 'center' }}
-        width='50%'
-      />
-      <EuropeSvg
-        height={screenHeight / 5}
+        style={({ pressed }) => { 
+          const style = {
+            flex: 1,
+            ...styles.shadow,
+          }
+          if (pressed) style.opacity = 0.5
+          return style
+        }}
+      >
+        <AsiaSvg
+          height={screenHeight / 5}
+          style={{ alignSelf: 'center' }}
+          width='150%'
+        />
+      </Pressable>
+      <Pressable 
+        android_ripple={{ borderless: false }}
         onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Europe' })}
-        style={{ alignSelf: 'center' }}
-        width='50%'
-      />
+        style={({ pressed }) => { 
+          const style = {
+            flex: 1,
+            ...styles.shadow,
+          }
+          if (pressed) style.opacity = 0.5
+          return style
+        }}
+      >
+        <EuropeSvg 
+          height={screenHeight / 5}
+          style={{ alignSelf: 'center' }}
+          width='130%'
+        />
+      </Pressable>
     </View>
   </View>
 }
