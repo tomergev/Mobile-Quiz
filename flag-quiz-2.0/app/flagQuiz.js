@@ -9,10 +9,10 @@ import {
   useWindowDimensions,
   View, 
 } from 'react-native'
-import ProgressBar from 'react-native-progress/Bar'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { styles } from '../styles'
+import Hearts from '../components/Hearts'
+import ProgressBar from '../components/ProgressBar'
 import ResultQuiz from '../components/ResultQuiz' 
 
 const FlagQuiz = () => {
@@ -37,25 +37,7 @@ const FlagQuiz = () => {
         isQuizDone ? <ResultQuiz numCorrectAnswers={currentIndex} /> : (
           <>
             <View style={{ flex: 2 }}>
-              <View style={{ flexDirection: 'row-reverse' }}>
-                <AntDesign 
-                  color='red' 
-                  name={numOfIncorrectSelections <= 0 ? 'heart' : 'hearto'} 
-                  size={18} 
-                  style={{ marginLeft: 2 }}
-                />
-                <AntDesign 
-                  color='red' 
-                  name={numOfIncorrectSelections <= 1 ? 'heart' : 'hearto'}  
-                  size={18} 
-                  style={{ marginLeft: 2 }}
-                />
-                <AntDesign 
-                  color='red' 
-                  name={numOfIncorrectSelections <= 2 ? 'heart' : 'hearto'}  
-                  size={18} 
-                />
-              </View>
+              <Hearts numOfIncorrectSelections={numOfIncorrectSelections} />
               <View 
                 style={{ 
                   flex: 1, 
@@ -65,18 +47,14 @@ const FlagQuiz = () => {
                 <Text 
                   style={{
                     alignSelf: 'center',
+                    color: 'white',
                     fontSize: 20,
                   }}
                 >
                   {quiz[currentIndex]?.answer?.name}
                 </Text>
               </View>
-              <ProgressBar 
-                height={screenHeight / 100} 
-                progress={(currentIndex / quiz.length)} 
-                style={{ marginBottom: 2 }}
-                width={null} 
-              />
+              <ProgressBar progress={currentIndex / quiz.length} />
             </View>
             <View style={{ flex: 4 }}>
               <FlatList
@@ -86,10 +64,11 @@ const FlagQuiz = () => {
                 numColumns={2}
                 renderItem={({ item: choice }) => {
                   const choiceStyle = { 
+                    backgroundColor: '#495057',
+                    borderRadius: 10,
                     flex: 1, 
                     height: screenHeight / 3.25, 
                     margin: screenHeight / 200,
-                    ...styles.shadow
                   }
                   const isChoiceSelected = choiceIdsSelected.includes(choice.id)
                   if (isChoiceSelected) {

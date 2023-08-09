@@ -9,10 +9,11 @@ import {
   View, 
   useWindowDimensions,
 } from 'react-native'
-import ProgressBar from 'react-native-progress/Bar'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styles } from '../styles'
 
+import Hearts from '../components/Hearts'
+import ProgressBar from '../components/ProgressBar'
 import ResultQuiz from '../components/ResultQuiz' 
 
 const CountryNameQuiz = () => {
@@ -42,36 +43,13 @@ const CountryNameQuiz = () => {
                 justifyContent: 'center',
               }}
             >
-              <View style={{ flexDirection: 'row-reverse' }}>
-                <AntDesign 
-                  color='red' 
-                  name={numOfIncorrectSelections <= 0 ? 'heart' : 'hearto'} 
-                  size={18} 
-                  style={{ marginLeft: 2 }}
-                />
-                <AntDesign 
-                  color='red' 
-                  name={numOfIncorrectSelections <= 1 ? 'heart' : 'hearto'}  
-                  size={18} 
-                  style={{ marginLeft: 2 }}
-                />
-                <AntDesign 
-                  color='red' 
-                  name={numOfIncorrectSelections <= 2 ? 'heart' : 'hearto'}  
-                  size={18} 
-                />
-              </View>
+              <Hearts numOfIncorrectSelections={numOfIncorrectSelections} />
               <Image             
                 resizeMode='center'
                 source={{ uri: quiz[currentIndex]?.answer?.flag }} 
                 style={{ flex: 1 }}
               />
-              <ProgressBar 
-                height={screenHeight / 100} 
-                progress={(currentIndex / quiz.length)} 
-                style={{ marginBottom: 2 }}
-                width={null} 
-              />
+              <ProgressBar progress={currentIndex / quiz.length} />
             </View>
             <View style={{ flex: 4 }}>
               <FlatList
