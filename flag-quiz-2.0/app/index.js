@@ -22,7 +22,7 @@ const App = () => {
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Pressable
         android_ripple={{ borderless: false }}
-        onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Oceania' })}
+        onPress={() => navigation.navigate('DashboardQuizes', { continent: 'Oceania', label: 'Australia and Oceania' })}
         style={({ pressed }) => { 
           const style = {
             alignItems: 'center',
