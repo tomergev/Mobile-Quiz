@@ -3,7 +3,6 @@ import {
   useNavigation,
 } from 'expo-router'
 import { 
-  Button,
   Image,
   Pressable,
   Text,
@@ -35,9 +34,10 @@ const DashboardQuizes = () => {
       </Text>
       
       <Pressable
-        onPress={() => navigation.navigate('FlagQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
+        onPress={() => navigation.navigate('CountryNameQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
         style={{ 
           backgroundColor: '#495057',
+          borderRadius: 10,
           flexDirection: 'row', 
           height: screenHeight / 10,
           margin: screenHeight / 100,
@@ -70,9 +70,10 @@ const DashboardQuizes = () => {
       </Pressable>
 
       <Pressable
-        onPress={() => navigation.navigate('CountryNameQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
+        onPress={() => navigation.navigate('FlagQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
         style={{ 
           backgroundColor: '#495057', 
+          borderRadius: 10,
           flexDirection: 'row', 
           height: screenHeight / 10,
           margin: screenHeight / 100,
@@ -135,15 +136,6 @@ const DashboardQuizes = () => {
           </Text>
         </View>
       </Pressable>
-
-      {/* <Button
-        onPress={() => navigation.navigate('FlagQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
-        title='4 Flags'
-      />
-      <Button
-        onPress={() => navigation.navigate('CountryNameQuiz', { quiz: JSON.stringify([quiz[0], quiz[1], quiz[2]]) })}
-        title='4 Countries'
-      /> */}
     </View>
   )
 }

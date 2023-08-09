@@ -27,6 +27,7 @@ const App = () => {
           const style = {
             alignItems: 'center',
             backgroundColor: '#495057',
+            borderRadius: 10,
             flex: 1,
             justifyContent: 'center',
             margin: screenHeight / 200,
@@ -47,6 +48,7 @@ const App = () => {
           const style = {
             alignItems: 'center',
             backgroundColor: '#495057',
+            borderRadius: 10,
             flex: 1,
             justifyContent: 'center',
             margin: screenHeight / 200,
@@ -70,6 +72,7 @@ const App = () => {
           const style = {
             alignItems: 'center',
             backgroundColor: '#495057',
+            borderRadius: 10,
             flex: 1,
             justifyContent: 'center',
             margin: screenHeight / 200,
@@ -90,6 +93,7 @@ const App = () => {
           const style = {
             alignItems: 'center',
             backgroundColor: '#495057',
+            borderRadius: 10,
             flex: 1,
             justifyContent: 'center',
             margin: screenHeight / 200,
@@ -113,6 +117,7 @@ const App = () => {
           const style = {
             alignItems: 'center',
             backgroundColor: '#495057',
+            borderRadius: 10,
             flex: 1,
             justifyContent: 'center',
             margin: screenHeight / 200,
@@ -133,6 +138,7 @@ const App = () => {
           const style = {
             alignItems: 'center',
             backgroundColor: '#495057',
+            borderRadius: 10,
             flex: 1,
             justifyContent: 'center',
             margin: screenHeight / 200,
