@@ -1,11 +1,13 @@
 import { Slot } from 'expo-router'
-import { StatusBar } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 const Layout = () => (
   <SafeAreaProvider>
     <StatusBar barStyle='light-content' /> 
-    <Slot />
+    <View style={{ backgroundColor: '#343A40', flex: 1 }}>
+      <Slot />
+    </View>
   </SafeAreaProvider>
 )
 

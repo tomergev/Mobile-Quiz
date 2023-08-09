@@ -1,7 +1,6 @@
 import { useNavigation } from 'expo-router'
 import { 
   Pressable,
-  Text,
   useWindowDimensions,
   View, 
 } from 'react-native'
@@ -19,7 +18,7 @@ const App = () => {
   const insets = useSafeAreaInsets()
   const { height: screenHeight } = useWindowDimensions()
 
-  return <View style={{ backgroundColor: '#343A40', flex: 1, paddingTop: insets.top }}>
+  return <View style={{ flex: 1, paddingTop: insets.top }}>
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Pressable
         android_ripple={{ borderless: false }}
