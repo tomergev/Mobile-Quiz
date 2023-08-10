@@ -45,7 +45,7 @@ const DashboardQuizes = () => {
       >
         <Image             
           resizeMode='contain'
-          source={{ uri: countriesFilteredByContinent[2]?.flags?.png }} 
+          source={{ uri: countriesFilteredByContinent[0]?.flags?.png }} 
           style={{ 
             height: '100%',
             width: screenWidth / 5,
@@ -83,7 +83,7 @@ const DashboardQuizes = () => {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <Image             
               resizeMode='contain'
-              source={{ uri: countriesFilteredByContinent[0]?.flags?.png }} 
+              source={{ uri: countriesFilteredByContinent[1]?.flags?.png }} 
               style={{ 
                 height: '100%',
                 marginRight: screenWidth / 100,
@@ -92,7 +92,7 @@ const DashboardQuizes = () => {
             />
             <Image             
               resizeMode='contain'
-              source={{ uri: countriesFilteredByContinent[3]?.flags?.png }} 
+              source={{ uri: countriesFilteredByContinent[2]?.flags?.png }} 
               style={{ 
                 height: '100%',
                 width: screenWidth / 10,
@@ -102,7 +102,7 @@ const DashboardQuizes = () => {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <Image             
               resizeMode='contain'
-              source={{ uri: countriesFilteredByContinent[4]?.flags?.png }} 
+              source={{ uri: countriesFilteredByContinent[3]?.flags?.png }} 
               style={{ 
                 height: '100%',
                 marginRight: screenWidth / 100,
@@ -111,7 +111,7 @@ const DashboardQuizes = () => {
             />
             <Image             
               resizeMode='contain'
-              source={{ uri: countriesFilteredByContinent[5]?.flags?.png }} 
+              source={{ uri: countriesFilteredByContinent[4]?.flags?.png }} 
               style={{ 
                 height: '100%',
                 width: screenWidth / 10,
