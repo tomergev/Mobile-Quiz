@@ -1,7 +1,15 @@
 import { 
+  StyleSheet,
   Text, 
   View, 
 } from 'react-native'
+
+const styles = StyleSheet.create({
+  text: {
+    color: 'white',
+    fontSize: 18,
+  }
+})
 
 const ResultQuiz = ({ numCorrectAnswers } = {}) => {
   return (
@@ -17,10 +25,10 @@ const ResultQuiz = ({ numCorrectAnswers } = {}) => {
           flexDirection: 'column',
         }}
       >
-        <Text>
+        <Text style={styles.text}>
           Result: {numCorrectAnswers}
         </Text>
-        <Text>
+        <Text style={styles.text}>
           Best: (Feature coming soon)
         </Text>
       </View>

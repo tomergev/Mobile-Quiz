@@ -14,32 +14,33 @@ const OptionFlag = ({
   setCurrentIndex,
   setNumOfIncorrectSelections,
 }) => {
-  const createStyle = () => {
-    const choiceStyle = { 
+  const createStyle = ({ pressed }) => {
+    const style = { 
       backgroundColor: '#495057',
       borderRadius: 10,
       flex: 1, 
       margin: screenHeight / 200,
     }
-    const choiceId = choice?.id
-    const isChoiceSelected = choiceIdsSelected.includes(choiceId)
+    
+    const isChoiceSelected = choiceIdsSelected.includes(choice?.id)
     if (isChoiceSelected) {
-      const isChoiceAnswer = choiceId === answer?.id
-      choiceStyle.borderColor = isChoiceAnswer ? 'green' : 'red'
-      choiceStyle.borderWidth = 5
+      const isChoiceAnswer = choice?.id === answer?.id
+      style.backgroundColor = isChoiceAnswer ? '#42f548' : 'red'
+      style.opacity = 0.75
     }
 
-    return choiceStyle
+    if (pressed) style.opacity = 0.5
+
+    return style
   }
   const onPress = () => {
-    const choiceId = choice?.id
     setChoiceIdsSelected([...choiceIdsSelected, choice?.id])
 
-    if (choiceId === answer?.id) {
+    if (choice?.id === answer?.id) {
       setTimeout(() => {
         setCurrentIndex(currentIndex + 1)
         setChoiceIdsSelected([])
-      }, 400)
+      }, 1000)
     } else {
       setNumOfIncorrectSelections(numOfIncorrectSelections + 1)
     }
@@ -47,12 +48,13 @@ const OptionFlag = ({
 
   return (
     <Pressable
+      android_ripple={{ borderless: false }}
       disabled={choiceIdsSelected.includes(choice?.id)}
       onPress={onPress}
       style={createStyle}
     >
       <Image             
-        resizeMode='center'
+        resizeMode='contain'
         source={{ uri: choice?.flag }} 
         style={{ flex: 1 }}
       />
