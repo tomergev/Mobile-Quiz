@@ -2,6 +2,9 @@ import {
   Image,
   Pressable,
 } from 'react-native'
+import correctJingle from '../audio/correct.mp3'
+import incorrectJingle from '../audio/incorrect.mp3'
+import useSound from '../hooks/useSound'
 
 const OptionFlag = ({ 
   answer,
@@ -14,6 +17,9 @@ const OptionFlag = ({
   setCurrentIndex,
   setNumOfIncorrectSelections,
 }) => {
+  const playCorrectJingle = useSound(correctJingle)
+  const playIncorrectJingle = useSound(incorrectJingle)
+  
   const createStyle = ({ pressed }) => {
     const style = { 
       backgroundColor: '#495057',
@@ -37,11 +43,13 @@ const OptionFlag = ({
     setChoiceIdsSelected([...choiceIdsSelected, choice?.id])
 
     if (choice?.id === answer?.id) {
+      playCorrectJingle()
       setTimeout(() => {
         setCurrentIndex(currentIndex + 1)
         setChoiceIdsSelected([])
       }, 1000)
     } else {
+      playIncorrectJingle()
       setNumOfIncorrectSelections(numOfIncorrectSelections + 1)
     }
   }
